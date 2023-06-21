@@ -13,19 +13,29 @@ namespace OssetianProverbsApp
         public MainForm()
         {
             InitializeComponent();
+
+            //Настраиваем свойства 
             proverbsListView.View = View.Details;
             proverbsListView.Columns.Add("На осетинском");
             proverbsListView.Columns.Add("На русский");
             proverbsListView.Columns[0].Width = 200;
             proverbsListView.Columns[1].Width = 200;
+
             InitializeProverbs();
             InitializeListBoxes();
+
             selectedProverbs = new List<string>();
+
+            // Привязываем обработчик к кнопке addButton
+            addButton.Click += addButton_Click;
+            // Привязываем обработчик к кнопке checkButton
+            checkButton.Click += checkButton_Click; 
+
         }
 
         private void InitializeProverbs()
         {
-            // Здесь вы можете заполнить списки пословицами на осетинском и их переводами на русский
+            // Здесь заполняем списки пословицами на осетинском и их переводами на русский
             ossetianProverbs = new List<string>
             {
                 "Пословица на осетинском 1",
@@ -69,6 +79,7 @@ namespace OssetianProverbsApp
                 proverbsListView.Items.Add(listViewItem);
                 selectedProverbs.Add(selectedProverb);
             }
+
             else
             {
                 MessageBox.Show("Пожалуйста, выберите пословицу и ее перевод.");
@@ -90,6 +101,7 @@ namespace OssetianProverbsApp
                     // Правильный перевод
                     item.BackColor = System.Drawing.Color.LightGreen;
                 }
+
                 else
                 {
                     // Неправильный перевод
