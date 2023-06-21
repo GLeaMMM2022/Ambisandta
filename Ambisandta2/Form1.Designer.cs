@@ -40,27 +40,27 @@
             // 
             this.ossetianListBox.FormattingEnabled = true;
             this.ossetianListBox.ItemHeight = 25;
-            this.ossetianListBox.Location = new System.Drawing.Point(177, 295);
+            this.ossetianListBox.Location = new System.Drawing.Point(74, 270);
             this.ossetianListBox.Name = "ossetianListBox";
-            this.ossetianListBox.Size = new System.Drawing.Size(315, 254);
+            this.ossetianListBox.Size = new System.Drawing.Size(443, 379);
             this.ossetianListBox.TabIndex = 0;
             // 
             // russianListBox
             // 
             this.russianListBox.FormattingEnabled = true;
             this.russianListBox.ItemHeight = 25;
-            this.russianListBox.Location = new System.Drawing.Point(643, 295);
+            this.russianListBox.Location = new System.Drawing.Point(567, 270);
             this.russianListBox.Name = "russianListBox";
-            this.russianListBox.Size = new System.Drawing.Size(315, 254);
+            this.russianListBox.Size = new System.Drawing.Size(435, 379);
             this.russianListBox.TabIndex = 1;
             // 
             // proverbsListView
             // 
             this.proverbsListView.FullRowSelect = true;
             this.proverbsListView.HideSelection = false;
-            this.proverbsListView.Location = new System.Drawing.Point(1030, 246);
+            this.proverbsListView.Location = new System.Drawing.Point(1089, 270);
             this.proverbsListView.Name = "proverbsListView";
-            this.proverbsListView.Size = new System.Drawing.Size(995, 369);
+            this.proverbsListView.Size = new System.Drawing.Size(995, 379);
             this.proverbsListView.TabIndex = 2;
             this.proverbsListView.UseCompatibleStateImageBehavior = false;
             this.proverbsListView.View = System.Windows.Forms.View.Details;
@@ -89,8 +89,9 @@
             this.rulesButton.Name = "rulesButton";
             this.rulesButton.Size = new System.Drawing.Size(146, 66);
             this.rulesButton.TabIndex = 5;
-            this.rulesButton.Text = "button1";
+            this.rulesButton.Text = "Правила";
             this.rulesButton.UseVisualStyleBackColor = true;
+            this.rulesButton.Click += new System.EventHandler(this.rulesButton_Click);
             // 
             // MainForm
             // 

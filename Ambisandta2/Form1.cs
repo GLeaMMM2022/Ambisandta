@@ -131,6 +131,9 @@ namespace OssetianProverbsApp
             }
         }
 
-        
+        private void rulesButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Выбирайте по 1 пословице соответствующие друг другу из списка доступных в двух окнах и нажимайте проверить :)");
+        }
     }
 }
