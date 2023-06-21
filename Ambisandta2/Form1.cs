@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OssetianProverbsApp
 {
     public partial class MainForm : Form
     {
+        //Создаем списки
         private List<string> ossetianProverbs;
         private List<string> russianTranslations;
         private List<string> selectedProverbs;
@@ -21,8 +28,8 @@ namespace OssetianProverbsApp
             proverbsListView.Columns[0].Width = 200;
             proverbsListView.Columns[1].Width = 200;
 
-            InitializeProverbs();
-            InitializeListBoxes();
+            InitializeProverbs(); //Для инициализации списокв пословиц
+            InitializeListBoxes(); //ДЛя заполнения ListBox-ов пословицами
 
             selectedProverbs = new List<string>();
 
@@ -38,16 +45,30 @@ namespace OssetianProverbsApp
             // Здесь заполняем списки пословицами на осетинском и их переводами на русский
             ossetianProverbs = new List<string>
             {
-                "Пословица на осетинском 1",
-                "Пословица на осетинском 2",
-                "Пословица на осетинском 3"
+                "Ӕфсӕст стонджы не 'мбары",
+                "Буцхаст уӕздан кӕны, уӕздан магуса кӕны, магуса та сӕфтмӕ цӕуы",
+                "Адӕмаг кусынӕн у",
+                "Зивӕггӕнаг иууылдӕр тӕхуды кӕны",
+                "Ард фӕсайын зын хъуыддаг у",
+                "Зондджын лӕг хъусгӕ фылдӕр кӕны, дзургӕ - къаддӕр",
+                "Кӕстӕран йӕ хӕс - хистӕрмӕ хъусын",
+                "Усы хорз лӕгыл дӕр зыны",
+                "Мадӕн йӕ ралгъыст дӕр арфӕ у",
+                "Куыдз дӕр хорздзинад никуы рох кӕны"
             };
 
             russianTranslations = new List<string>
             {
-                "Перевод на русский 1",
-                "Перевод на русский 2",
-                "Перевод на русский 3"
+                "Сытый голодного не разумеет",
+                "Баловень становится нежным, неженка - лодырем, а лодырь идёт к гибели",
+                "Человек существует, чтобы трудиться",
+                "Ленивый лишь мечтает",
+                "Нарушить клятву - тяжелое преступление",
+                "Умный человек больше слушает, а меньше говорит",
+                "Долг младшего - слушаться старшего",
+                "При хорошей жене и муж делается лучше",
+                "Даже проклятье материнское является благословением",
+                "Даже собака не забывает благодеяние"
             };
         }
 
