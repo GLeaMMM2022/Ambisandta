@@ -32,8 +32,8 @@ namespace OssetianProverbsApp
 
 
             //Вызываем метод рандом
-            ShuffleLists(ossetianProverbs);
-            //ShuffleLists(russianTranslations);
+            ShuffleLists(ossetianProverbs,russianTranslations);
+            
 
             InitializeListBoxes(); //ДЛя заполнения ListBox-ов пословицами
 
@@ -81,10 +81,10 @@ namespace OssetianProverbsApp
         }
 
         //Здесь перемешиваем списки
-        private void ShuffleLists(List<string> list)
+        private void ShuffleLists(List<string> list1, List<string> list2)
         {
             Random rand = new Random();
-            int n = list.Count;
+            int n = list1.Count;
             while (n > 0)
             {
 
@@ -92,10 +92,14 @@ namespace OssetianProverbsApp
                 //Получаем рандомное число i из отрезка[0,n]
                 int i = rand.Next(n+1);
 
-                string value  = list[i]; //Сохраняем значение i-го элем во врем переменную value 
+                string value1  = list1[i]; //Сохраняем значение i-го элем во врем переменную value 
+                list1[i] = list1[n]; //меняем значения элементов 
+                list1[n] = value1;
 
-                list[i] = list[n]; //меняем значения элементов 
-                list[n] = value;
+
+                string value2 = list2[i]; //Сохраняем значение i-го элем во врем переменную value 
+                list2[i] = list2[n]; //меняем значения элементов 
+                list2[n] = value2;
 
             }
         }
@@ -148,9 +152,12 @@ namespace OssetianProverbsApp
 
                 string proverb = item.SubItems[0].Text;
                 string translation = item.SubItems[1].Text;
+
                 int index = ossetianProverbs.IndexOf(proverb);
 
-                if (index != -1 && russianTranslations[index] == translation)
+                string correspondingTranslation = (index != -1) ? russianTranslations[index] : "";
+
+                if (correspondingTranslation == translation)
                 {
                     // Правильный перевод
                     item.BackColor = System.Drawing.Color.LightGreen;
