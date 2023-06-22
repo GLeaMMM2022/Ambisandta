@@ -29,6 +29,12 @@ namespace OssetianProverbsApp
             proverbsListView.Columns[1].Width = 200;
 
             InitializeProverbs(); //Для инициализации списокв пословиц
+
+
+            //Вызываем метод рандом
+            ShuffleLists(ossetianProverbs);
+            ShuffleLists(russianTranslations);
+
             InitializeListBoxes(); //ДЛя заполнения ListBox-ов пословицами
 
             selectedProverbs = new List<string>();
@@ -70,10 +76,37 @@ namespace OssetianProverbsApp
                 "Даже проклятье материнское является благословением",
                 "Даже собака не забывает благодеяние"
             };
+            //ВЫзваем для перемешивания метолды
+            
+        }
+
+        //Здесь перемешиваем списки
+        private void ShuffleLists(List<string> list)
+        {
+            Random rand = new Random();
+            int n = list.Count;
+            while (n > 0)
+            {
+
+                n--;
+                //Получаем рандомное число i из отрезка[0,n]
+                int i = rand.Next(n+1);
+
+                string value  = list[i]; //Сохраняем значение i-го элем во врем переменную value 
+
+                list[i] = list[n]; //меняем значения элементов 
+                list[n] = value;
+
+            }
         }
 
         private void InitializeListBoxes()
         {
+
+            /*Random random = new Random();
+
+            for (int i = 0; i < ossetianProverbs.Count-1; i++) { }*/
+
             // Заполняем ListBox пословицами на осетинском
             foreach (var proverb in ossetianProverbs)
             {
