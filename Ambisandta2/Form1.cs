@@ -33,7 +33,7 @@ namespace OssetianProverbsApp
 
             //Вызываем метод рандом
             ShuffleLists(ossetianProverbs);
-            ShuffleLists(russianTranslations);
+            //ShuffleLists(russianTranslations);
 
             InitializeListBoxes(); //ДЛя заполнения ListBox-ов пословицами
 
