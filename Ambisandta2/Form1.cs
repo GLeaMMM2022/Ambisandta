@@ -17,9 +17,16 @@ namespace OssetianProverbsApp
         private List<string> russianTranslations;
         private List<string> selectedProverbs;
 
+        private Dictionary<int, string> proverbDictionary;
+        private Dictionary<int, string> translationDictionary;
+
         public MainForm()
         {
+
             InitializeComponent();
+
+            proverbDictionary = new Dictionary<int, string>();
+            translationDictionary = new Dictionary<int, string>();
 
             //Настраиваем свойства 
             proverbsListView.View = View.Details;
@@ -32,8 +39,8 @@ namespace OssetianProverbsApp
 
 
             //Вызываем метод рандом
-            ShuffleLists(ossetianProverbs,russianTranslations);
-            
+            ShuffleLists(ossetianProverbs);
+            //ShuffleLists(russianTranslations);
 
             InitializeListBoxes(); //ДЛя заполнения ListBox-ов пословицами
 
@@ -42,7 +49,7 @@ namespace OssetianProverbsApp
             // Привязываем обработчик к кнопке addButton
             addButton.Click += addButton_Click;
             // Привязываем обработчик к кнопке checkButton
-            checkButton.Click += checkButton_Click; 
+            checkButton.Click += checkButton_Click;
 
         }
 
@@ -76,30 +83,30 @@ namespace OssetianProverbsApp
                 "Даже проклятье материнское является благословением",
                 "Даже собака не забывает благодеяние"
             };
-            //ВЫзваем для перемешивания метолды
-            
+            for (int i = 0; i < ossetianProverbs.Count; i++)
+            {
+                proverbDictionary[i] = ossetianProverbs[i];
+                translationDictionary[i] = russianTranslations[i];
+            }
+
         }
 
         //Здесь перемешиваем списки
-        private void ShuffleLists(List<string> list1, List<string> list2)
+        private void ShuffleLists(List<string> list)
         {
             Random rand = new Random();
-            int n = list1.Count;
+            int n = list.Count;
             while (n > 0)
             {
 
                 n--;
                 //Получаем рандомное число i из отрезка[0,n]
-                int i = rand.Next(n+1);
+                int i = rand.Next(n + 1);
 
-                string value1  = list1[i]; //Сохраняем значение i-го элем во врем переменную value 
-                list1[i] = list1[n]; //меняем значения элементов 
-                list1[n] = value1;
+                string value = list[i]; //Сохраняем значение i-го элем во врем переменную value 
 
-
-                string value2 = list2[i]; //Сохраняем значение i-го элем во врем переменную value 
-                list2[i] = list2[n]; //меняем значения элементов 
-                list2[n] = value2;
+                list[i] = list[n]; //меняем значения элементов 
+                list[n] = value;
 
             }
         }
@@ -153,11 +160,10 @@ namespace OssetianProverbsApp
                 string proverb = item.SubItems[0].Text;
                 string translation = item.SubItems[1].Text;
 
-                int index = ossetianProverbs.IndexOf(proverb);
 
-                string correspondingTranslation = (index != -1) ? russianTranslations[index] : "";
+                int index = proverbDictionary.FirstOrDefault(x => x.Value == proverb).Key;
 
-                if (correspondingTranslation == translation)
+                if (index != -1 && russianTranslations[index] == translation)
                 {
                     // Правильный перевод
                     item.BackColor = System.Drawing.Color.LightGreen;
